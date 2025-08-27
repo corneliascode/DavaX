@@ -17,7 +17,7 @@ from finding_books import (
 st.set_page_config(page_title="AI Book Finder", layout="centered")
 
 # App title (HTML to center)
-st.markdown("<h1 style='text-align: center;'>Smart Librarian</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>Smart Librarian</h1>", unsafe_allow_html=True) 
 st.markdown("---")
 
 ##################################################################

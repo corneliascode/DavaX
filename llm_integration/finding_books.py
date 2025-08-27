@@ -18,6 +18,8 @@ from dotenv import load_dotenv
 # load environment from .env if present
 load_dotenv()
 
+client = openai.OpenAI()
+
 # set OpenAI API key for subsequent API calls
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -82,8 +84,8 @@ def get_final_summary(title: str) -> str:
             """
 
         # call OpenAI to produce the final summary text
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo", 
+        response = client.chat.completions.create(
+            model="gpt-4o-mini", 
             messages=[
                 {"role": "system", "content": "You are a knowledgeable librarian who writes engaging and informative book summaries."},
                 {"role": "user", "content": prompt}
@@ -125,8 +127,8 @@ def generate_fictional_book(query: str) -> tuple:
         """
 
         # call OpenAI to synthesize a recommendation
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are a creative librarian who creates fictional book recommendations."},
                 {"role": "user", "content": prompt}
